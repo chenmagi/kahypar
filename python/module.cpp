@@ -288,6 +288,18 @@ If only one type of weights is required, the other argument has to be an empty l
         },
         "Set the filename of the computed partition",
         py::arg("file_name"))
+      .def("setInputPartitionFileName",[](Context& c, const std::string& file_name) {
+          c.partition.input_partition_filename = file_name;
+        },
+        "Set the filename of the input partition",
+        py::arg("file_name"))
+
+      .def("setVcycle",[](Context& c, const int num_iteration) {
+          c.partition.global_search_iterations = num_iteration;
+        },
+        "Seed for the number of iterations for global search",
+        py::arg("num_iteration"))  
+      
       .def("suppressOutput",[](Context& c, const bool decision) {
           c.partition.quiet_mode = decision;
         },
